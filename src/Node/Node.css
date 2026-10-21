@@ -1,0 +1,29 @@
+.node {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid black;
+    font-size: 2rem;
+
+    color: white;
+    background-color: black;
+
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+/* isso ta ruim ainda dry it */
+.swap_node {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid black;
+    font-size: 2rem;
+
+    color: black;
+    background-color: white;
+    width: 5.5rem;
+    height: 5.5rem;
+}
