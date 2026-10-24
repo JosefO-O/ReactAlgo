@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true
   },
-  "include": ["src"]
+  "include": ["src", "ArraySort/sortFunctions/insertionSort.ts"]
 }

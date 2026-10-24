@@ -1,11 +1,6 @@
-import { useState } from "react"
-
 import Node from "../Node/Node.tsx" 
 
-function ArraySort({ array, sortFunction }: { array: number[], sortFunction: (arr: number[]) => Generator<number[][]> }) {
-    const [gen, _] = useState(sortFunction(array))
-    const [currState, setCurrState] = useState(gen.next())
-
+function ArraySort({ currState }: { currState: any }) {
     let arr: number[]
 
     let i: number
@@ -17,16 +12,9 @@ function ArraySort({ array, sortFunction }: { array: number[], sortFunction: (ar
         j = currState.value[1][1]
     } else arr = []
 
-    function showNextState() {
-        const next = gen.next()
-
-        if (!next.done)
-            setCurrState(next)
-    }
-
     return (
         <>
-            <div style={{ display: "flex", width: "fit-content" }} className="list" onClick={ showNextState }>
+            <div style={{ display: "flex", width: "fit-content" }} className="list">
                 {
                     arr.map((value, nodeIndex) => {
                         return <Node value={value} isCurrSwapNode={ (nodeIndex == i || nodeIndex == j) ? true : false }/>
