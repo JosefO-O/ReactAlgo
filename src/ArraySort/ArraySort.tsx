@@ -1,11 +1,10 @@
 import { useState } from "react"
-import { bubbleSort } from "./bubbleSort.ts"
 
 import Node from "../Node/Node.tsx" 
 
-function BubbleSortList({ array }: { array: number[] }) {
-    const [iterator, _] = useState(bubbleSort(array))
-    const [currState, setCurrState] = useState(iterator.next())
+function ArraySort({ array, sortFunction }: { array: number[], sortFunction: (arr: number[]) => Generator<number[][]> }) {
+    const [gen, _] = useState(sortFunction(array))
+    const [currState, setCurrState] = useState(gen.next())
 
     let arr: number[]
 
@@ -19,9 +18,9 @@ function BubbleSortList({ array }: { array: number[] }) {
     } else arr = []
 
     function showNextState() {
-        const next = iterator.next()
+        const next = gen.next()
 
-        if (!next.done) 
+        if (!next.done)
             setCurrState(next)
     }
 
@@ -38,4 +37,4 @@ function BubbleSortList({ array }: { array: number[] }) {
     )
 }
 
-export default BubbleSortList 
+export default ArraySort 

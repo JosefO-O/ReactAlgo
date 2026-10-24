@@ -1,4 +1,4 @@
-export function* bubbleSort(array: number[]) {
+function* bubbleSort(array: number[]) {
     for (let i = 0; i<array.length; i++) {
         for (let j = 0; j<array.length - i - 1; j++) {
             yield [[...array], [j, j+1]]
@@ -13,3 +13,5 @@ export function* bubbleSort(array: number[]) {
         }
     }
 }
+
+export default bubbleSort
