@@ -1,23 +1,29 @@
 import Node from "../Node/Node.tsx" 
+import { type ArraySortState } from "../dataStructuresTypes.ts"
 
-function ArraySort({ currState }: { currState: any }) {
-    let arr: number[]
+const [nodeBgColor, nodeColor] = ["black", "white"]
+const [coloredNodeBg, coloredNodeColor] = ["white", "black"]
 
-    let i: number
-    let j: number
+function ArraySort({ currState }: { currState: ArraySortState }) {
+    let arr = currState[0]
+    let i = currState[1][0]
+    let j = currState[1][1]
 
-    if (currState.value) {
-        arr = currState.value[0]
-        i = currState.value[1][0]
-        j = currState.value[1][1]
-    } else arr = []
+    if (!currState) {
+        arr = []
+        i = 0
+        j = 0
+    }
 
     return (
         <>
             <div style={{ display: "flex", width: "fit-content" }} className="list">
                 {
                     arr.map((value, nodeIndex) => {
-                        return <Node value={value} isCurrSwapNode={ (nodeIndex == i || nodeIndex == j) ? true : false }/>
+                        const bgColor = (nodeIndex === i || nodeIndex === j) ? coloredNodeBg : nodeBgColor
+                        const color = (nodeIndex === i || nodeIndex === j) ? coloredNodeColor : nodeColor 
+
+                        return <Node value={value} nodeBgColor={bgColor} nodeColor={color} />
                     })
                 }
             </div>

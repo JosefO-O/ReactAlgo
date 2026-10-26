@@ -1,9 +1,9 @@
 import "./Node.css"
 
-function Node({ value, isCurrSwapNode }: { value: number, isCurrSwapNode: boolean }) {
+function Node({ value, nodeBgColor, nodeColor }: { value: number, nodeBgColor: string, nodeColor: string }) {
     return (
         <>
-            <div className={ isCurrSwapNode ? "swap_node" : "node" }>{value}</div>
+            <div className="node" style={{ backgroundColor: nodeBgColor, color: nodeColor }}>{value}</div>
         </>
     )
 }
